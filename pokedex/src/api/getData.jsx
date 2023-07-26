@@ -1,6 +1,6 @@
-
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import './datos.css';
 
 const PokemonComponent = () => {
   const [data, setData] = useState([]);
@@ -35,16 +35,16 @@ const PokemonComponent = () => {
   }, []);
 
   return (
-    <div>
+    <div className="pokemon-container">
       {data.length > 0 ? (
         data.map((pokemon, index) => (
-          <div key={index}>
-            <h2>{pokemon.name}</h2>
-            <img src={pokemon.image} alt={pokemon.name} />
-            <p>Type: {pokemon.type}</p>
-            <p>Height: {pokemon.height}</p>
-            <p>Weight: {pokemon.weight}</p>
-            <p>Pokedex Number: {pokemon.pokedexNumber}</p>
+          <div key={index} className="pokemon-card">
+            <h2 className="pokemon-name">{pokemon.name}</h2>
+            <img className="pokemon-image" src={pokemon.image} alt={pokemon.name} />
+            <p className="pokemon-type">Type: {pokemon.type}</p>
+            <p className="pokemon-height">Height: {pokemon.height}</p>
+            <p className="pokemon-weight">Weight: {pokemon.weight}</p>
+            <p className="pokemon-number">Pokedex Number: {pokemon.pokedexNumber}</p>
           </div>
         ))
       ) : (

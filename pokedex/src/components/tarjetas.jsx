@@ -1,5 +1,7 @@
 import "./tarjetas.css";
 
+
+
 function Card (){
     return(
         <div className="Card">
