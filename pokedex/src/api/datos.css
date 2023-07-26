@@ -22,8 +22,11 @@
     font-weight: bold;
     color: #ffffff;
     margin-bottom: 10px;
+    text-transform: lowercase;
 }
-
+.pokemon-name::first-letter{
+    text-transform: uppercase;
+}
 .pokemon-image {
     width: 100%;
     height: auto;
