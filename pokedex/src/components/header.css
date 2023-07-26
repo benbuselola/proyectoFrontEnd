@@ -1,0 +1,69 @@
+header {
+    background-color: #fff;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    position: relative;
+  }
+  
+  /* Estilos para la parte superior roja */
+  header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 50%;
+    background-color: #ff0000;
+    border-radius: 50% 50% 0 0;
+  }
+  
+  /* Estilos para la parte inferior blanca */
+  header::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 50%;
+    background-color: #fff;
+    border-radius: 0 0 50% 50%;
+  }
+  
+  /* Estilos para la imagen (círculo negro) */
+  .imagen {
+    width: 100px;
+    height: 100px;
+    background-color: #000;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    position: relative;
+    z-index: 1;
+  }
+  
+  /* Estilos para la etiqueta "PRIMERA" */
+  .label-left {
+    position: absolute;
+    left: 10px; /* Ajusta la posición horizontal según tus necesidades */
+    top: 50%;
+    transform: translateY(-50%);
+    color: black; /* Color del texto */
+    font-weight: bold; /* Fuente en negrita */
+    z-index: 2; /* Colocar el texto encima de las partes roja y blanca del círculo */
+
+  }
+  
+  /* Estilos para la etiqueta "GENERACION" */
+  .label-right {
+    position: absolute;
+    right: 10px; /* Ajusta la posición horizontal según tus necesidades */
+    top: 50%;
+    transform: translateY(-50%);
+    color: black; /* Color del texto */
+    font-weight: bold; /* Fuente en negrita */
+    z-index: 2; /* Colocar el texto encima de las partes roja y blanca del círculo */
+  }
+  

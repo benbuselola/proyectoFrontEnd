@@ -4,9 +4,14 @@ import viteLogo from '/vite.svg';
 import './App.css';
 import Card from './components/tarjetas';
 import PokemonComponent from './api/getData';
+
+import Header from './components/header' 
+
 function App() {
   return (
+
     <div className="App">
+      <Header/>
       <PokemonComponent />
     </div>
   );

@@ -54,4 +54,47 @@ const PokemonComponent = () => {
   );
 };
 
+const PokemonList = () => {
+  const [pokemonData, setPokemonData] = useState([]);
+  const [startIndex, setStartIndex] = useState(0);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await fetchPokemonData();
+      setPokemonData(data);
+    };
+
+    fetchData();
+  }, []);
+
+  const handleNext = () => {
+    setStartIndex((prevIndex) => prevIndex + 4);
+  };
+
+  const handlePrevious = () => {
+    setStartIndex((prevIndex) => Math.max(prevIndex - 4, 0));
+  };
+
+  return (
+    <div>
+      <button onClick={handlePrevious} disabled={startIndex === 0}>
+        Anterior
+      </button>
+      {pokemonData.slice(startIndex, startIndex + 4).map((pokemon) => (
+        <Link key={pokemon.name} to={`/pokemon/${pokemon.name}`}>
+          <div>
+            <img src={pokemon.image} alt={pokemon.name} />
+            <h2>{pokemon.name}</h2>
+            <p>{pokemon.type}</p>
+          </div>
+        </Link>
+      ))}
+      <button onClick={handleNext} disabled={startIndex + 4 >= pokemonData.length}>
+        Siguiente
+      </button>
+    </div>
+  );
+};
+
+
 export default PokemonComponent;
