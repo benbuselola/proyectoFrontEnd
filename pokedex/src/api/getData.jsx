@@ -38,13 +38,20 @@ const PokemonComponent = () => {
     <div className="pokemon-container">
       {data.length > 0 ? (
         data.map((pokemon, index) => (
-          <div key={index} className="pokemon-card">
+          <div key={index} className={`pokemon-card type-${pokemon.type.split(", ")[0]}`}>
             <h2 className="pokemon-name">{pokemon.name}</h2>
             <img className="pokemon-image" src={pokemon.image} alt={pokemon.name} />
-            <p className="pokemon-type">Type: {pokemon.type}</p>
-            <p className="pokemon-height">Height: {pokemon.height}</p>
-            <p className="pokemon-weight">Weight: {pokemon.weight}</p>
-            <p className="pokemon-number">Pokedex Number: {pokemon.pokedexNumber}</p>
+            <div className="pokemon-details">
+              <div>
+                <p className="pokemon-type">Type: {pokemon.type}</p>
+                <p className="pokemon-height">Height: {pokemon.height}</p>
+                <p className="pokemon-weight">Weight: {pokemon.weight}</p>
+              </div>
+              <div className="pokemon-number">
+                <p>Pokedex Number:</p>
+                <p>{pokemon.pokedexNumber}</p>
+              </div>
+            </div>
           </div>
         ))
       ) : (
@@ -53,48 +60,5 @@ const PokemonComponent = () => {
     </div>
   );
 };
-
-const PokemonList = () => {
-  const [pokemonData, setPokemonData] = useState([]);
-  const [startIndex, setStartIndex] = useState(0);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const data = await fetchPokemonData();
-      setPokemonData(data);
-    };
-
-    fetchData();
-  }, []);
-
-  const handleNext = () => {
-    setStartIndex((prevIndex) => prevIndex + 4);
-  };
-
-  const handlePrevious = () => {
-    setStartIndex((prevIndex) => Math.max(prevIndex - 4, 0));
-  };
-
-  return (
-    <div>
-      <button onClick={handlePrevious} disabled={startIndex === 0}>
-        Anterior
-      </button>
-      {pokemonData.slice(startIndex, startIndex + 4).map((pokemon) => (
-        <Link key={pokemon.name} to={`/pokemon/${pokemon.name}`}>
-          <div>
-            <img src={pokemon.image} alt={pokemon.name} />
-            <h2>{pokemon.name}</h2>
-            <p>{pokemon.type}</p>
-          </div>
-        </Link>
-      ))}
-      <button onClick={handleNext} disabled={startIndex + 4 >= pokemonData.length}>
-        Siguiente
-      </button>
-    </div>
-  );
-};
-
 
 export default PokemonComponent;
